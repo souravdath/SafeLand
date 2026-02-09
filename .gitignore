@@ -1,0 +1,6 @@
+__pycache__/
+.env
+*.pkl
+*.csv
+*.zip
+*.log
