@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 215 20% 90%;
+    --card: 222 47% 9%;
+    --card-foreground: 215 20% 90%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 215 20% 90%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 215 20% 90%;
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 16% 57%;
+    --accent: 222 47% 15%;
+    --accent-foreground: 215 20% 90%;
+    --destructive: 346 84% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 47% 15%;
+    --input: 222 47% 15%;
+    --ring: 210 100% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 215 20% 90%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 12%;
+    --sidebar-accent-foreground: 215 20% 90%;
+    --sidebar-border: 222 47% 15%;
+    --sidebar-ring: 210 100% 50%;
+    
+    /* SafeLand Custom Variables */
+    --risk-low: 160 84% 39%;
+    --risk-medium: 38 92% 50%;
+    --risk-high: 346 84% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-slate-900 text-slate-200 font-sans antialiased;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.5);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.6);
+  }
+
+  /* Glass Morphism Effect */
+  .glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .glass-strong {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Risk Level Badges */
+  .risk-badge-low {
+    @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  }
+  
+  .risk-badge-medium {
+    @apply bg-amber-500/20 text-amber-400 border border-amber-500/30;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+  }
+  
+  .risk-badge-high {
+    @apply bg-rose-600/20 text-rose-400 border border-rose-600/30;
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.2);
+  }
+
+  /* Animated Background */
+  .bg-animated {
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1e293b);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Flow Lines Animation */
+  .flow-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .flow-line {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.3), transparent);
+    animation: flow-down 8s linear infinite;
+  }
+  
+  @keyframes flow-down {
+    0% { transform: translateY(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+  }
+
+  /* Map Custom Styles */
+  .leaflet-container {
+    background: #0f172a !important;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  .leaflet-control-attribution {
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #64748b !important;
+    font-size: 10px !important;
+  }
+  
+  .leaflet-control-attribution a {
+    color: #94a3b8 !important;
+  }
+
+  /* Custom Marker Styles */
+  .custom-marker {
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .marker-pin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .marker-pulse {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+  
+  .marker-pulse.low {
+    background: rgba(16, 185, 129, 0.4);
+  }
+  
+  .marker-pulse.medium {
+    background: rgba(245, 158, 11, 0.4);
+  }
+  
+  .marker-pulse.high {
+    background: rgba(225, 29, 72, 0.4);
+  }
+
+  /* Ripple Effect */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear forwards;
+    pointer-events: none;
+  }
+
+  /* Data Card Hover Effect */
+  .data-card {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .data-card:hover {
+    @apply transform -translate-y-1;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Loading Spinner */
+  .spinner-ring {
+    border: 3px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin-slow 1s linear infinite;
+  }
+
+  /* Number Counter Animation */
+  @property --num {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+  }
+  
+  .animate-number {
+    animation: counter 1s ease-out forwards;
+    counter-reset: num var(--num);
+  }
+  
+  .animate-number::after {
+    content: counter(num);
+  }
+  
+  @keyframes counter {
+    from { --num: 0; }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  }
+  
+  .text-gradient-risk-low {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  }
+  
+  .text-gradient-risk-medium {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  }
+  
+  .text-gradient-risk-high {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+  }
+}
