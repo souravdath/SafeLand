@@ -1,0 +1,6 @@
+rainfall,water_level,elevation,soil_moisture,river_distance,risk
+120,4.2,35,78,0.8,High
+80,2.1,60,55,3.2,Low
+95,3.5,45,68,1.5,Medium
+150,5.0,30,85,0.4,High
+60,1.8,75,40,5.0,Low

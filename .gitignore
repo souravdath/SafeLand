@@ -2,6 +2,8 @@ venv/
 __pycache__/
 .env
 *.pkl
-*.csv
 *.zip
 *.log
+
+data/raw/
+data/processed/
